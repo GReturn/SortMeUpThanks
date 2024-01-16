@@ -2,5 +2,5 @@
 
 public static class GlobalVariables
 {
-    public const int BarWidth = 5;
+    public const int BarWidth = 4;
 }
