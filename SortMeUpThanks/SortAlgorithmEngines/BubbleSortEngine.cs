@@ -1,31 +1,22 @@
 ﻿namespace SortMeUpThanks.SortAlgorithmEngines;
 
-class BubbleSortEngine : ISortEngine
+class BubbleSortEngine(int[] arr, Graphics graphics, int maxValue) : ISortEngine
 {
-    private bool _sorted = false;
-    private int[] arr;
-    private Graphics graphics;
-    private int maxValue;
-    private int BarWidth = GlobalVariables.BarWidth;
-    Brush brushWhite = new SolidBrush(Color.White);
-    Brush brushBlack = new SolidBrush(Color.Black);
+    private readonly int[] arr = arr;
+    private readonly Graphics graphics = graphics;
+    private readonly int maxValue = maxValue;
+    private readonly int BarWidth = GlobalVariables.BarWidth;
+    readonly Brush brushWhite = new SolidBrush(Color.White);
+    readonly Brush brushBlack = new SolidBrush(Color.Black);
 
-    public void Sort(int[] arr, Graphics graphics, int maxValue)
+    public void Sort()
     {
-        this.arr = arr;
-        this.graphics = graphics;
-        this.maxValue = maxValue;
-
-        while(!_sorted)
-        { 
-            for(int i = 0; i < arr.Length - 1; i++) 
+        for(int i = 0; i < arr.Length - 1; i++) 
+        {
+            if (arr[i] > arr[i + 1])
             {
-                if (arr[i] > arr[i + 1])
-                {
-                    Swap(i, i + 1);
-                }
+                Swap(i, i + 1);
             }
-            _sorted = IsSorted();
         }
     }
 
@@ -40,7 +31,7 @@ class BubbleSortEngine : ISortEngine
         graphics.FillRectangle(brushWhite, nextIndex*BarWidth, maxValue - arr[nextIndex], BarWidth, maxValue);
     }
 
-    private bool IsSorted()
+    public bool IsSorted()
     {
         for (int i = 0; i < arr.Length - 1; i++)
         {
@@ -48,5 +39,15 @@ class BubbleSortEngine : ISortEngine
                 return false;
         }
         return true;
+    }
+
+    public void Resume()
+    {
+        for (int i = 0; i < arr.Length - 1; i++)
+        {
+            int RectX = i * BarWidth;
+            graphics.FillRectangle(new SolidBrush(Color.White),
+                RectX, maxValue - arr[i], BarWidth, maxValue);
+        }
     }
 }
