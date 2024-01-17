@@ -29,8 +29,8 @@ partial class SortMeUpThanksForm
     private void InitializeComponent()
     {
         Menus = new MenuStrip();
-        fileToolStripMenuItem = new ToolStripMenuItem();
-        exitToolStripMenuItem = new ToolStripMenuItem();
+        c_fileToolStripMenuItem = new ToolStripMenuItem();
+        c_exitToolStripMenuItem = new ToolStripMenuItem();
         c_helpToolStripMenuItem = new ToolStripMenuItem();
         c_algorithmLabel = new Label();
         c_dropdownAlgorithms = new ComboBox();
@@ -42,26 +42,26 @@ partial class SortMeUpThanksForm
         // 
         // Menus
         // 
-        Menus.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, c_helpToolStripMenuItem });
+        Menus.Items.AddRange(new ToolStripItem[] { c_fileToolStripMenuItem, c_helpToolStripMenuItem });
         Menus.Location = new Point(0, 0);
         Menus.Name = "Menus";
         Menus.Size = new Size(1064, 24);
         Menus.TabIndex = 0;
         Menus.Text = "Menus";
         // 
-        // fileToolStripMenuItem
+        // c_fileToolStripMenuItem
         // 
-        fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { exitToolStripMenuItem });
-        fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-        fileToolStripMenuItem.Size = new Size(37, 20);
-        fileToolStripMenuItem.Text = "File";
+        c_fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { c_exitToolStripMenuItem });
+        c_fileToolStripMenuItem.Name = "c_fileToolStripMenuItem";
+        c_fileToolStripMenuItem.Size = new Size(37, 20);
+        c_fileToolStripMenuItem.Text = "File";
         // 
-        // exitToolStripMenuItem
+        // c_exitToolStripMenuItem
         // 
-        exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-        exitToolStripMenuItem.Size = new Size(93, 22);
-        exitToolStripMenuItem.Text = "Exit";
-        exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
+        c_exitToolStripMenuItem.Name = "c_exitToolStripMenuItem";
+        c_exitToolStripMenuItem.Size = new Size(180, 22);
+        c_exitToolStripMenuItem.Text = "Exit";
+        c_exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
         // 
         // c_helpToolStripMenuItem
         // 
@@ -139,8 +139,8 @@ partial class SortMeUpThanksForm
     #endregion
 
     private MenuStrip Menus;
-    private ToolStripMenuItem fileToolStripMenuItem;
-    private ToolStripMenuItem exitToolStripMenuItem;
+    private ToolStripMenuItem c_fileToolStripMenuItem;
+    private ToolStripMenuItem c_exitToolStripMenuItem;
     private ToolStripMenuItem c_helpToolStripMenuItem;
     private Label c_algorithmLabel;
     private ComboBox c_dropdownAlgorithms;
