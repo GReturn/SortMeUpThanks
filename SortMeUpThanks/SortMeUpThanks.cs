@@ -57,7 +57,27 @@ public partial class SortMeUpThanksForm : Form
     }
     private void c_btnPause_Click(object sender, EventArgs e)
     {
+        if(!isPaused)
+        {
+            bgWorker.CancelAsync();
+            isPaused = true;
+        }
+        else
+        {
+            var numEntries = c_panelSortScreen.Width / BarWidth;
+            var maxValue = c_panelSortScreen.Height;
+            isPaused = false;
 
+            for (int i = 0; i < numEntries; i++)
+            {
+                int rectX = i * BarWidth;
+                graphics.FillRectangle(new SolidBrush(Color.Black),
+                    rectX, 0, BarWidth, maxValue);
+                graphics.FillRectangle(new SolidBrush(Color.Black), 
+                    rectX, maxValue - arr[i], BarWidth, maxValue);
+            }
+            bgWorker.RunWorkerAsync(argument: c_dropdownAlgorithms.SelectedItem);
+        }
     }
 
     #region Reset Button
