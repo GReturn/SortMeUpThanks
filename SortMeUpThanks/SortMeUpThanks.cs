@@ -1,14 +1,13 @@
-using SortMeUpThanks.SortAlgorithmEngines;
-
 namespace SortMeUpThanks;
 
-public partial class SortMeUpThanks : Form
+public partial class SortMeUpThanksForm : Form
 {
+    private readonly int BarWidth = GlobalVariables.BarWidth;
+    BackgroundWorker bgw = null;
     private Graphics graphics;
     private int[] arr;
-    private int BarWidth = GlobalVariables.BarWidth;
 
-    public SortMeUpThanks()
+    public SortMeUpThanksForm()
     {
         InitializeComponent();
     }

@@ -1,6 +1,6 @@
 ﻿namespace SortMeUpThanks;
 
-partial class SortMeUpThanks
+partial class SortMeUpThanksForm
 {
     /// <summary>
     ///  Required designer variable.
@@ -115,7 +115,7 @@ partial class SortMeUpThanks
         panelSortScreen.Size = new Size(1044, 588);
         panelSortScreen.TabIndex = 5;
         // 
-        // SortMeUpThanks
+        // SortMeUpThanksForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
@@ -128,7 +128,7 @@ partial class SortMeUpThanks
         Controls.Add(Menus);
         FormBorderStyle = FormBorderStyle.FixedSingle;
         MainMenuStrip = Menus;
-        Name = "SortMeUpThanks";
+        Name = "SortMeUpThanksForm";
         Text = "SMUT - SortMeUpThanks (Sorting Algorithm Visualizer)";
         Menus.ResumeLayout(false);
         Menus.PerformLayout();
