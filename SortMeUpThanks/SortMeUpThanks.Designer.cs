@@ -28,7 +28,7 @@ partial class SortMeUpThanksForm
     /// </summary>
     private void InitializeComponent()
     {
-        Menus = new MenuStrip();
+        c_Menus = new MenuStrip();
         c_fileToolStripMenuItem = new ToolStripMenuItem();
         c_exitToolStripMenuItem = new ToolStripMenuItem();
         c_helpToolStripMenuItem = new ToolStripMenuItem();
@@ -37,17 +37,17 @@ partial class SortMeUpThanksForm
         c_btnReset = new Button();
         c_btnStart = new Button();
         c_panelSortScreen = new Panel();
-        Menus.SuspendLayout();
+        c_Menus.SuspendLayout();
         SuspendLayout();
         // 
-        // Menus
+        // c_Menus
         // 
-        Menus.Items.AddRange(new ToolStripItem[] { c_fileToolStripMenuItem, c_helpToolStripMenuItem });
-        Menus.Location = new Point(0, 0);
-        Menus.Name = "Menus";
-        Menus.Size = new Size(1064, 24);
-        Menus.TabIndex = 0;
-        Menus.Text = "Menus";
+        c_Menus.Items.AddRange(new ToolStripItem[] { c_fileToolStripMenuItem, c_helpToolStripMenuItem });
+        c_Menus.Location = new Point(0, 0);
+        c_Menus.Name = "c_Menus";
+        c_Menus.Size = new Size(1064, 24);
+        c_Menus.TabIndex = 0;
+        c_Menus.Text = "Menus";
         // 
         // c_fileToolStripMenuItem
         // 
@@ -125,20 +125,20 @@ partial class SortMeUpThanksForm
         Controls.Add(c_btnReset);
         Controls.Add(c_dropdownAlgorithms);
         Controls.Add(c_algorithmLabel);
-        Controls.Add(Menus);
+        Controls.Add(c_Menus);
         FormBorderStyle = FormBorderStyle.FixedSingle;
-        MainMenuStrip = Menus;
+        MainMenuStrip = c_Menus;
         Name = "SortMeUpThanksForm";
         Text = "SMUT - SortMeUpThanks (Sorting Algorithm Visualizer)";
-        Menus.ResumeLayout(false);
-        Menus.PerformLayout();
+        c_Menus.ResumeLayout(false);
+        c_Menus.PerformLayout();
         ResumeLayout(false);
         PerformLayout();
     }
 
     #endregion
 
-    private MenuStrip Menus;
+    private MenuStrip c_Menus;
     private ToolStripMenuItem c_fileToolStripMenuItem;
     private ToolStripMenuItem c_exitToolStripMenuItem;
     private ToolStripMenuItem c_helpToolStripMenuItem;
