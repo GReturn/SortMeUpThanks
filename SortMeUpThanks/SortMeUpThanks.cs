@@ -1,5 +1,6 @@
 using SortMeUpThanks.SortAlgorithmEngines;
 using System.ComponentModel;
+using System.Reflection;
 
 namespace SortMeUpThanks;
 
@@ -49,21 +50,14 @@ public partial class SortMeUpThanksForm : Form
             };
             bgWorker.DoWork += new DoWorkEventHandler(BgWorker_DoWork);
             bgWorker.RunWorkerAsync(argument: c_dropdownAlgorithms.SelectedItem);
-
-            //var sortEngine = new BubbleSortEngine();
-            //sortEngine.Sort(arr, graphics, c_panelSortScreen.Height);
         }
 
         c_btnReset.Enabled = true;
         c_btnStart.Enabled = true;
     }
 
-    private void BgWorker_DoWork(object? sender, DoWorkEventArgs e)
-    {
-        throw new NotImplementedException();
-    }
-
     #region Reset Button
+
     private void btnReset_Click(object sender, EventArgs e)
     {
         using(graphics = c_panelSortScreen.CreateGraphics())
@@ -107,4 +101,32 @@ public partial class SortMeUpThanksForm : Form
 
     #endregion
 
+    #region Background Worker
+
+    private void BgWorker_DoWork(object? sender, DoWorkEventArgs e)
+    {
+        BackgroundWorker worker = sender as BackgroundWorker;
+        string nameSortEngine = (string)e.Argument;
+
+        Type type = Type.GetType("SortMeUpThanks." + nameSortEngine);
+        var ctors = type.GetConstructors();
+
+        try
+        {
+            var sortEngine = (ISortEngine)ctors[0]
+                .Invoke(new object[] { arr, graphics, c_panelSortScreen.Height });
+
+            while(!sortEngine.IsSorted() && !bgWorker.CancellationPending)
+            {
+                sortEngine.Sort();
+            }
+        }
+        catch (Exception ex)
+        {
+
+            throw;
+        }
+    }
+
+    #endregion
 }
