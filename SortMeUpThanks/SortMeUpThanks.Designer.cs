@@ -31,18 +31,18 @@ partial class SortMeUpThanksForm
         Menus = new MenuStrip();
         fileToolStripMenuItem = new ToolStripMenuItem();
         exitToolStripMenuItem = new ToolStripMenuItem();
-        helpToolStripMenuItem = new ToolStripMenuItem();
-        algorithmLabel = new Label();
-        dropdownAlgorithms = new ComboBox();
-        btnReset = new Button();
-        btnStart = new Button();
-        panelSortScreen = new Panel();
+        c_helpToolStripMenuItem = new ToolStripMenuItem();
+        c_algorithmLabel = new Label();
+        c_dropdownAlgorithms = new ComboBox();
+        c_btnReset = new Button();
+        c_btnStart = new Button();
+        c_panelSortScreen = new Panel();
         Menus.SuspendLayout();
         SuspendLayout();
         // 
         // Menus
         // 
-        Menus.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, helpToolStripMenuItem });
+        Menus.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, c_helpToolStripMenuItem });
         Menus.Location = new Point(0, 0);
         Menus.Name = "Menus";
         Menus.Size = new Size(1064, 24);
@@ -63,68 +63,68 @@ partial class SortMeUpThanksForm
         exitToolStripMenuItem.Text = "Exit";
         exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
         // 
-        // helpToolStripMenuItem
+        // c_helpToolStripMenuItem
         // 
-        helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-        helpToolStripMenuItem.Size = new Size(44, 20);
-        helpToolStripMenuItem.Text = "Help";
+        c_helpToolStripMenuItem.Name = "c_helpToolStripMenuItem";
+        c_helpToolStripMenuItem.Size = new Size(44, 20);
+        c_helpToolStripMenuItem.Text = "Help";
         // 
-        // algorithmLabel
+        // c_algorithmLabel
         // 
-        algorithmLabel.AutoSize = true;
-        algorithmLabel.Location = new Point(12, 32);
-        algorithmLabel.Name = "algorithmLabel";
-        algorithmLabel.Size = new Size(61, 15);
-        algorithmLabel.TabIndex = 1;
-        algorithmLabel.Text = "Algorithm";
+        c_algorithmLabel.AutoSize = true;
+        c_algorithmLabel.Location = new Point(12, 32);
+        c_algorithmLabel.Name = "c_algorithmLabel";
+        c_algorithmLabel.Size = new Size(61, 15);
+        c_algorithmLabel.TabIndex = 1;
+        c_algorithmLabel.Text = "Algorithm";
         // 
-        // dropdownAlgorithms
+        // c_dropdownAlgorithms
         // 
-        dropdownAlgorithms.FormattingEnabled = true;
-        dropdownAlgorithms.Location = new Point(79, 27);
-        dropdownAlgorithms.Name = "dropdownAlgorithms";
-        dropdownAlgorithms.Size = new Size(191, 23);
-        dropdownAlgorithms.TabIndex = 2;
+        c_dropdownAlgorithms.FormattingEnabled = true;
+        c_dropdownAlgorithms.Location = new Point(79, 27);
+        c_dropdownAlgorithms.Name = "c_dropdownAlgorithms";
+        c_dropdownAlgorithms.Size = new Size(191, 23);
+        c_dropdownAlgorithms.TabIndex = 2;
         // 
-        // btnReset
+        // c_btnReset
         // 
-        btnReset.Location = new Point(276, 26);
-        btnReset.Name = "btnReset";
-        btnReset.Size = new Size(75, 23);
-        btnReset.TabIndex = 3;
-        btnReset.Text = "Reset";
-        btnReset.UseVisualStyleBackColor = true;
-        btnReset.Click += btnReset_Click;
+        c_btnReset.Location = new Point(276, 26);
+        c_btnReset.Name = "c_btnReset";
+        c_btnReset.Size = new Size(75, 23);
+        c_btnReset.TabIndex = 3;
+        c_btnReset.Text = "Reset";
+        c_btnReset.UseVisualStyleBackColor = true;
+        c_btnReset.Click += btnReset_Click;
         // 
-        // btnStart
+        // c_btnStart
         // 
-        btnStart.Location = new Point(357, 26);
-        btnStart.Name = "btnStart";
-        btnStart.Size = new Size(75, 23);
-        btnStart.TabIndex = 4;
-        btnStart.Text = "Start";
-        btnStart.UseVisualStyleBackColor = true;
-        btnStart.Click += btnStart_Click;
+        c_btnStart.Location = new Point(357, 26);
+        c_btnStart.Name = "c_btnStart";
+        c_btnStart.Size = new Size(75, 23);
+        c_btnStart.TabIndex = 4;
+        c_btnStart.Text = "Start";
+        c_btnStart.UseVisualStyleBackColor = true;
+        c_btnStart.Click += btnStart_Click;
         // 
-        // panelSortScreen
+        // c_panelSortScreen
         // 
-        panelSortScreen.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-        panelSortScreen.BackColor = SystemColors.ControlDark;
-        panelSortScreen.Location = new Point(9, 87);
-        panelSortScreen.Name = "panelSortScreen";
-        panelSortScreen.Size = new Size(1044, 588);
-        panelSortScreen.TabIndex = 5;
+        c_panelSortScreen.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+        c_panelSortScreen.BackColor = SystemColors.ControlDark;
+        c_panelSortScreen.Location = new Point(9, 87);
+        c_panelSortScreen.Name = "c_panelSortScreen";
+        c_panelSortScreen.Size = new Size(1044, 588);
+        c_panelSortScreen.TabIndex = 5;
         // 
         // SortMeUpThanksForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(1064, 681);
-        Controls.Add(panelSortScreen);
-        Controls.Add(btnStart);
-        Controls.Add(btnReset);
-        Controls.Add(dropdownAlgorithms);
-        Controls.Add(algorithmLabel);
+        Controls.Add(c_panelSortScreen);
+        Controls.Add(c_btnStart);
+        Controls.Add(c_btnReset);
+        Controls.Add(c_dropdownAlgorithms);
+        Controls.Add(c_algorithmLabel);
         Controls.Add(Menus);
         FormBorderStyle = FormBorderStyle.FixedSingle;
         MainMenuStrip = Menus;
@@ -141,10 +141,10 @@ partial class SortMeUpThanksForm
     private MenuStrip Menus;
     private ToolStripMenuItem fileToolStripMenuItem;
     private ToolStripMenuItem exitToolStripMenuItem;
-    private ToolStripMenuItem helpToolStripMenuItem;
-    private Label algorithmLabel;
-    private ComboBox dropdownAlgorithms;
-    private Button btnReset;
-    private Button btnStart;
-    private Panel panelSortScreen;
+    private ToolStripMenuItem c_helpToolStripMenuItem;
+    private Label c_algorithmLabel;
+    private ComboBox c_dropdownAlgorithms;
+    private Button c_btnReset;
+    private Button c_btnStart;
+    private Panel c_panelSortScreen;
 }
