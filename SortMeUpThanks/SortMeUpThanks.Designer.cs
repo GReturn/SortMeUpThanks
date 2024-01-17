@@ -33,7 +33,7 @@ partial class SortMeUpThanksForm
         exitToolStripMenuItem = new ToolStripMenuItem();
         helpToolStripMenuItem = new ToolStripMenuItem();
         algorithmLabel = new Label();
-        comboBox1 = new ComboBox();
+        dropdownAlgorithms = new ComboBox();
         btnReset = new Button();
         btnStart = new Button();
         panelSortScreen = new Panel();
@@ -78,13 +78,13 @@ partial class SortMeUpThanksForm
         algorithmLabel.TabIndex = 1;
         algorithmLabel.Text = "Algorithm";
         // 
-        // comboBox1
+        // dropdownAlgorithms
         // 
-        comboBox1.FormattingEnabled = true;
-        comboBox1.Location = new Point(79, 27);
-        comboBox1.Name = "comboBox1";
-        comboBox1.Size = new Size(191, 23);
-        comboBox1.TabIndex = 2;
+        dropdownAlgorithms.FormattingEnabled = true;
+        dropdownAlgorithms.Location = new Point(79, 27);
+        dropdownAlgorithms.Name = "dropdownAlgorithms";
+        dropdownAlgorithms.Size = new Size(191, 23);
+        dropdownAlgorithms.TabIndex = 2;
         // 
         // btnReset
         // 
@@ -123,7 +123,7 @@ partial class SortMeUpThanksForm
         Controls.Add(panelSortScreen);
         Controls.Add(btnStart);
         Controls.Add(btnReset);
-        Controls.Add(comboBox1);
+        Controls.Add(dropdownAlgorithms);
         Controls.Add(algorithmLabel);
         Controls.Add(Menus);
         FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -143,7 +143,7 @@ partial class SortMeUpThanksForm
     private ToolStripMenuItem exitToolStripMenuItem;
     private ToolStripMenuItem helpToolStripMenuItem;
     private Label algorithmLabel;
-    private ComboBox comboBox1;
+    private ComboBox dropdownAlgorithms;
     private Button btnReset;
     private Button btnStart;
     private Panel panelSortScreen;
