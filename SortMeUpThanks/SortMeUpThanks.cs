@@ -1,9 +1,12 @@
+using SortMeUpThanks.SortAlgorithmEngines;
+using System.ComponentModel;
+
 namespace SortMeUpThanks;
 
 public partial class SortMeUpThanksForm : Form
 {
     private readonly int BarWidth = GlobalVariables.BarWidth;
-    BackgroundWorker bgWorker = null;
+    private BackgroundWorker bgWorker;
     private Graphics graphics;
     private int[] arr;
     private bool isPaused = false;
@@ -32,6 +35,32 @@ public partial class SortMeUpThanksForm : Form
     private void exitToolStripMenuItem_Click(object sender, EventArgs e)
     {
         Close();
+    }
+    private void btnStart_Click(object sender, EventArgs e)
+    {
+        c_btnStart.Enabled = false;
+        c_btnReset.Enabled = false;
+
+        using(graphics = c_panelSortScreen.CreateGraphics()) 
+        {
+            bgWorker = new BackgroundWorker
+            {
+                WorkerSupportsCancellation = true
+            };
+            bgWorker.DoWork += new DoWorkEventHandler(BgWorker_DoWork);
+            bgWorker.RunWorkerAsync(argument: c_dropdownAlgorithms.SelectedItem);
+
+            //var sortEngine = new BubbleSortEngine();
+            //sortEngine.Sort(arr, graphics, c_panelSortScreen.Height);
+        }
+
+        c_btnReset.Enabled = true;
+        c_btnStart.Enabled = true;
+    }
+
+    private void BgWorker_DoWork(object? sender, DoWorkEventArgs e)
+    {
+        throw new NotImplementedException();
     }
 
     #region Reset Button
@@ -78,18 +107,4 @@ public partial class SortMeUpThanksForm : Form
 
     #endregion
 
-    private void btnStart_Click(object sender, EventArgs e)
-    {
-        c_btnStart.Enabled = false;
-        c_btnReset.Enabled = false;
-
-        using(graphics = c_panelSortScreen.CreateGraphics()) 
-        { 
-            var sortEngine = new BubbleSortEngine();
-            sortEngine.Sort(arr, graphics, c_panelSortScreen.Height);
-        }
-
-        c_btnReset.Enabled = true;
-        c_btnStart.Enabled = true;
-    }
 }
