@@ -25,8 +25,8 @@ public partial class SortMeUpThanksForm : Form
             .Where(x => typeof(ISortEngine).IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract)
             .Select(x => x.Name).ToList();
         listOfAlgorithms.Sort();
-        
-        foreach (string algorithm in listOfAlgorithms) 
+
+        foreach (string algorithm in listOfAlgorithms)
         {
             c_dropdownAlgorithms.Items.Add(algorithm);
         }
@@ -42,7 +42,7 @@ public partial class SortMeUpThanksForm : Form
         c_btnStart.Enabled = false;
         c_btnReset.Enabled = false;
 
-        using(graphics = c_panelSortScreen.CreateGraphics()) 
+        using (graphics = c_panelSortScreen.CreateGraphics())
         {
             bgWorker = new BackgroundWorker
             {
@@ -55,18 +55,22 @@ public partial class SortMeUpThanksForm : Form
         c_btnReset.Enabled = true;
         c_btnStart.Enabled = true;
     }
+    private void c_btnPause_Click(object sender, EventArgs e)
+    {
+
+    }
 
     #region Reset Button
 
     private void btnReset_Click(object sender, EventArgs e)
     {
-        using(graphics = c_panelSortScreen.CreateGraphics())
+        using (graphics = c_panelSortScreen.CreateGraphics())
         {
             ClearPanel(graphics);
             DrawBars(graphics);
         }
     }
-    
+
     private void ClearPanel(Graphics graphics)
     {
         var panelWidth = c_panelSortScreen.Width;
@@ -116,7 +120,7 @@ public partial class SortMeUpThanksForm : Form
             var sortEngine = (ISortEngine)ctors[0]
                 .Invoke(new object[] { arr, graphics, c_panelSortScreen.Height });
 
-            while(!sortEngine.IsSorted() && !bgWorker.CancellationPending)
+            while (!sortEngine.IsSorted() && !bgWorker.CancellationPending)
             {
                 sortEngine.Sort();
             }
@@ -128,4 +132,10 @@ public partial class SortMeUpThanksForm : Form
     }
 
     #endregion
+
+    private void c_algorithmLabel_Click(object sender, EventArgs e)
+    {
+
+    }
+
 }

@@ -37,6 +37,7 @@ partial class SortMeUpThanksForm
         c_btnReset = new Button();
         c_btnStart = new Button();
         c_panelSortScreen = new Panel();
+        c_btnPause = new Button();
         c_Menus.SuspendLayout();
         SuspendLayout();
         // 
@@ -59,7 +60,7 @@ partial class SortMeUpThanksForm
         // c_exitToolStripMenuItem
         // 
         c_exitToolStripMenuItem.Name = "c_exitToolStripMenuItem";
-        c_exitToolStripMenuItem.Size = new Size(180, 22);
+        c_exitToolStripMenuItem.Size = new Size(93, 22);
         c_exitToolStripMenuItem.Text = "Exit";
         c_exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
         // 
@@ -72,23 +73,24 @@ partial class SortMeUpThanksForm
         // c_algorithmLabel
         // 
         c_algorithmLabel.AutoSize = true;
-        c_algorithmLabel.Location = new Point(12, 32);
+        c_algorithmLabel.Location = new Point(12, 68);
         c_algorithmLabel.Name = "c_algorithmLabel";
         c_algorithmLabel.Size = new Size(61, 15);
         c_algorithmLabel.TabIndex = 1;
         c_algorithmLabel.Text = "Algorithm";
+        c_algorithmLabel.Click += c_algorithmLabel_Click;
         // 
         // c_dropdownAlgorithms
         // 
         c_dropdownAlgorithms.FormattingEnabled = true;
-        c_dropdownAlgorithms.Location = new Point(79, 27);
+        c_dropdownAlgorithms.Location = new Point(79, 65);
         c_dropdownAlgorithms.Name = "c_dropdownAlgorithms";
         c_dropdownAlgorithms.Size = new Size(191, 23);
         c_dropdownAlgorithms.TabIndex = 2;
         // 
         // c_btnReset
         // 
-        c_btnReset.Location = new Point(276, 26);
+        c_btnReset.Location = new Point(9, 36);
         c_btnReset.Name = "c_btnReset";
         c_btnReset.Size = new Size(75, 23);
         c_btnReset.TabIndex = 3;
@@ -98,7 +100,7 @@ partial class SortMeUpThanksForm
         // 
         // c_btnStart
         // 
-        c_btnStart.Location = new Point(357, 26);
+        c_btnStart.Location = new Point(90, 36);
         c_btnStart.Name = "c_btnStart";
         c_btnStart.Size = new Size(75, 23);
         c_btnStart.TabIndex = 4;
@@ -110,16 +112,27 @@ partial class SortMeUpThanksForm
         // 
         c_panelSortScreen.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
         c_panelSortScreen.BackColor = SystemColors.ControlDark;
-        c_panelSortScreen.Location = new Point(9, 87);
+        c_panelSortScreen.Location = new Point(9, 95);
         c_panelSortScreen.Name = "c_panelSortScreen";
-        c_panelSortScreen.Size = new Size(1044, 588);
+        c_panelSortScreen.Size = new Size(1044, 580);
         c_panelSortScreen.TabIndex = 5;
+        // 
+        // c_btnPause
+        // 
+        c_btnPause.Location = new Point(276, 64);
+        c_btnPause.Name = "c_btnPause";
+        c_btnPause.Size = new Size(125, 23);
+        c_btnPause.TabIndex = 6;
+        c_btnPause.Text = "Pause/Resume";
+        c_btnPause.UseVisualStyleBackColor = true;
+        c_btnPause.Click += c_btnPause_Click;
         // 
         // SortMeUpThanksForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(1064, 681);
+        Controls.Add(c_btnPause);
         Controls.Add(c_panelSortScreen);
         Controls.Add(c_btnStart);
         Controls.Add(c_btnReset);
@@ -147,4 +160,5 @@ partial class SortMeUpThanksForm
     private Button c_btnReset;
     private Button c_btnStart;
     private Panel c_panelSortScreen;
+    private Button c_btnPause;
 }
