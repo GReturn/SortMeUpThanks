@@ -3,13 +3,30 @@ namespace SortMeUpThanks;
 public partial class SortMeUpThanksForm : Form
 {
     private readonly int BarWidth = GlobalVariables.BarWidth;
-    BackgroundWorker bgw = null;
+    BackgroundWorker bgWorker = null;
     private Graphics graphics;
     private int[] arr;
+    private bool isPaused = false;
 
     public SortMeUpThanksForm()
     {
         InitializeComponent();
+        PopulateDropdownAlgorithms();
+    }
+
+    private void PopulateDropdownAlgorithms()
+    {
+        // WTF ??? THIS IS MASSIVE
+        List<string> listOfAlgorithms = AppDomain.CurrentDomain.GetAssemblies().SelectMany(x => x.GetTypes())
+            .Where(x => typeof(ISortEngine).IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract)
+            .Select(x => x.Name).ToList();
+        listOfAlgorithms.Sort();
+        
+        foreach (string algorithm in listOfAlgorithms) 
+        {
+            c_dropdownAlgorithms.Items.Add(algorithm);
+        }
+        c_dropdownAlgorithms.SelectedIndex = 0;
     }
 
     private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -20,7 +37,7 @@ public partial class SortMeUpThanksForm : Form
     #region Reset Button
     private void btnReset_Click(object sender, EventArgs e)
     {
-        using(graphics = panelSortScreen.CreateGraphics())
+        using(graphics = c_panelSortScreen.CreateGraphics())
         {
             ClearPanel(graphics);
             DrawBars(graphics);
@@ -29,8 +46,8 @@ public partial class SortMeUpThanksForm : Form
     
     private void ClearPanel(Graphics graphics)
     {
-        var panelWidth = panelSortScreen.Width;
-        var maxValue = panelSortScreen.Height;
+        var panelWidth = c_panelSortScreen.Width;
+        var maxValue = c_panelSortScreen.Height;
 
         graphics.FillRectangle(new SolidBrush(Color.Black),
                 0, 0, panelWidth, maxValue);
@@ -38,8 +55,8 @@ public partial class SortMeUpThanksForm : Form
 
     private void DrawBars(Graphics graphics)
     {
-        var panelWidth = panelSortScreen.Width;
-        var maxValue = panelSortScreen.Height;
+        var panelWidth = c_panelSortScreen.Width;
+        var maxValue = c_panelSortScreen.Height;
         var numEntries = panelWidth / BarWidth;
         arr = new int[numEntries];
 
@@ -63,16 +80,16 @@ public partial class SortMeUpThanksForm : Form
 
     private void btnStart_Click(object sender, EventArgs e)
     {
-        btnStart.Enabled = false;
-        btnReset.Enabled = false;
+        c_btnStart.Enabled = false;
+        c_btnReset.Enabled = false;
 
-        using(graphics = panelSortScreen.CreateGraphics()) 
+        using(graphics = c_panelSortScreen.CreateGraphics()) 
         { 
             var sortEngine = new BubbleSortEngine();
-            sortEngine.Sort(arr, graphics, panelSortScreen.Height);
+            sortEngine.Sort(arr, graphics, c_panelSortScreen.Height);
         }
 
-        btnReset.Enabled = true;
-        btnStart.Enabled = true;
+        c_btnReset.Enabled = true;
+        c_btnStart.Enabled = true;
     }
 }
