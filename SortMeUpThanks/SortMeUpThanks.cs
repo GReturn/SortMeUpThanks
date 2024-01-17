@@ -123,7 +123,6 @@ public partial class SortMeUpThanksForm : Form
         }
         catch (Exception ex)
         {
-
             throw;
         }
     }
