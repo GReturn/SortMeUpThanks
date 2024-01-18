@@ -7,7 +7,7 @@ namespace SortMeUpThanks;
 public partial class SortMeUpThanksForm : Form
 {
     private readonly int BarWidth = GlobalVariables.BarWidth;
-    private BackgroundWorker bgWorker;
+    private BackgroundWorker bgWorker = null;
     private Graphics graphics;
     private int[] arr;
     private bool isPaused = false;
@@ -39,21 +39,14 @@ public partial class SortMeUpThanksForm : Form
     }
     private void btnStart_Click(object sender, EventArgs e)
     {
-        c_btnStart.Enabled = false;
-        c_btnReset.Enabled = false;
+        if(arr == null) btnReset_Click(null, null);
 
-        using (graphics = c_panelSortScreen.CreateGraphics())
+        bgWorker = new BackgroundWorker
         {
-            bgWorker = new BackgroundWorker
-            {
-                WorkerSupportsCancellation = true
-            };
-            bgWorker.DoWork += new DoWorkEventHandler(BgWorker_DoWork);
-            bgWorker.RunWorkerAsync(argument: c_dropdownAlgorithms.SelectedItem);
-        }
-
-        c_btnReset.Enabled = true;
-        c_btnStart.Enabled = true;
+            WorkerSupportsCancellation = true
+        };
+        bgWorker.DoWork += new DoWorkEventHandler(BgWorker_DoWork);
+        bgWorker.RunWorkerAsync(argument: c_dropdownAlgorithms.SelectedItem);
     }
     private void c_btnPause_Click(object sender, EventArgs e)
     {
@@ -64,6 +57,8 @@ public partial class SortMeUpThanksForm : Form
         }
         else
         {
+            if (bgWorker.IsBusy) return;
+
             var numEntries = c_panelSortScreen.Width / BarWidth;
             var maxValue = c_panelSortScreen.Height;
             isPaused = false;
@@ -80,32 +75,17 @@ public partial class SortMeUpThanksForm : Form
         }
     }
 
-    #region Reset Button
 
     private void btnReset_Click(object sender, EventArgs e)
     {
-        using (graphics = c_panelSortScreen.CreateGraphics())
-        {
-            ClearPanel(graphics);
-            DrawBars(graphics);
-        }
-    }
-
-    private void ClearPanel(Graphics graphics)
-    {
-        var panelWidth = c_panelSortScreen.Width;
-        var maxValue = c_panelSortScreen.Height;
-
-        graphics.FillRectangle(new SolidBrush(Color.Black),
-                0, 0, panelWidth, maxValue);
-    }
-
-    private void DrawBars(Graphics graphics)
-    {
+        graphics = c_panelSortScreen.CreateGraphics();
         var panelWidth = c_panelSortScreen.Width;
         var maxValue = c_panelSortScreen.Height;
         var numEntries = panelWidth / BarWidth;
         arr = new int[numEntries];
+
+        graphics.FillRectangle(new SolidBrush(Color.Black),
+                0, 0, panelWidth, maxValue);
 
         // Assign random value for each unit
         var random = new Random();
@@ -113,7 +93,6 @@ public partial class SortMeUpThanksForm : Form
         {
             arr[i] = random.Next(0, maxValue);
         }
-
         // Fill each individual units of rectangle
         for (int i = 0; i < numEntries; i++)
         {
@@ -123,8 +102,6 @@ public partial class SortMeUpThanksForm : Form
         }
     }
 
-    #endregion
-
     #region Background Worker
 
     private void BgWorker_DoWork(object? sender, DoWorkEventArgs e)
@@ -132,7 +109,7 @@ public partial class SortMeUpThanksForm : Form
         BackgroundWorker worker = sender as BackgroundWorker;
         string nameSortEngine = (string)e.Argument;
 
-        Type type = Type.GetType("SortMeUpThanks." + nameSortEngine);
+        Type type = Type.GetType("SortMeUpThanks.SortAlgorithmEngines." + nameSortEngine);
         var ctors = type.GetConstructors();
 
         try

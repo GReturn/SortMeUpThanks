@@ -1,4 +1,6 @@
-﻿namespace SortMeUpThanks.SortAlgorithmEngines;
+﻿using System.Diagnostics;
+
+namespace SortMeUpThanks.SortAlgorithmEngines;
 
 class BubbleSortEngine(int[] arr, Graphics graphics, int maxValue) : ISortEngine
 {
@@ -6,8 +8,6 @@ class BubbleSortEngine(int[] arr, Graphics graphics, int maxValue) : ISortEngine
     private readonly Graphics graphics = graphics;
     private readonly int maxValue = maxValue;
     private readonly int BarWidth = GlobalVariables.BarWidth;
-    readonly Brush brushWhite = new SolidBrush(Color.White);
-    readonly Brush brushBlack = new SolidBrush(Color.Black);
 
     public void Sort()
     {
@@ -24,11 +24,16 @@ class BubbleSortEngine(int[] arr, Graphics graphics, int maxValue) : ISortEngine
     {
         (arr[nextIndex], arr[currentIndex]) = (arr[currentIndex], arr[nextIndex]);
 
-        graphics.FillRectangle(brushBlack, currentIndex * BarWidth, 0, BarWidth, maxValue);
-        graphics.FillRectangle(brushBlack, nextIndex * BarWidth, 0, BarWidth, maxValue);
+        Debug.WriteLine($"CurrentIndex: {currentIndex}, NextIndex: {nextIndex}, X1: {currentIndex * BarWidth}, X2: {nextIndex * BarWidth}");
 
-        graphics.FillRectangle(brushWhite, currentIndex*BarWidth, maxValue - arr[currentIndex], BarWidth, maxValue);
-        graphics.FillRectangle(brushWhite, nextIndex*BarWidth, maxValue - arr[nextIndex], BarWidth, maxValue);
+        DrawBar(currentIndex, arr[currentIndex]);
+        DrawBar(nextIndex, arr[nextIndex]);
+
+    }
+    private void DrawBar(int position, int height)
+    {
+        graphics.FillRectangle(new SolidBrush(Color.Black), position * BarWidth, 0, BarWidth, maxValue);
+        graphics.FillRectangle(new SolidBrush(Color.White), position * BarWidth, maxValue - height, BarWidth, maxValue);
     }
 
     public bool IsSorted()
