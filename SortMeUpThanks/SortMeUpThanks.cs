@@ -39,7 +39,7 @@ public partial class SortMeUpThanksForm : Form
     }
     private void btnStart_Click(object sender, EventArgs e)
     {
-        if(arr == null) btnReset_Click(null, null);
+        //if(arr == null) btnReset_Click(null, null);
 
         bgWorker = new BackgroundWorker
         {
@@ -57,7 +57,7 @@ public partial class SortMeUpThanksForm : Form
         }
         else
         {
-            if (bgWorker.IsBusy) return;
+            //if (bgWorker.IsBusy) return;
 
             var numEntries = c_panelSortScreen.Width / BarWidth;
             var maxValue = c_panelSortScreen.Height;
@@ -74,8 +74,7 @@ public partial class SortMeUpThanksForm : Form
             bgWorker.RunWorkerAsync(argument: c_dropdownAlgorithms.SelectedItem);
         }
     }
-
-
+    
     private void btnReset_Click(object sender, EventArgs e)
     {
         graphics = c_panelSortScreen.CreateGraphics();

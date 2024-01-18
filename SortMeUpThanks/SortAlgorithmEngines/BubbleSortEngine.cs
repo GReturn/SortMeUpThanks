@@ -28,7 +28,6 @@ class BubbleSortEngine(int[] arr, Graphics graphics, int maxValue) : ISortEngine
 
         DrawBar(currentIndex, arr[currentIndex]);
         DrawBar(nextIndex, arr[nextIndex]);
-
     }
     private void DrawBar(int position, int height)
     {
