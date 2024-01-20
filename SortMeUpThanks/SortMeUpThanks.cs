@@ -64,7 +64,7 @@ public partial class SortMeUpThanksForm : Form
                 int rectX = i * BarWidth;
                 graphics.FillRectangle(new SolidBrush(Color.Black),
                     rectX, 0, BarWidth, maxValue);
-                graphics.FillRectangle(new SolidBrush(Color.Black), 
+                graphics.FillRectangle(new SolidBrush(Color.White), 
                     rectX, maxValue - arr[i], BarWidth, maxValue);
             }
             bgWorker.RunWorkerAsync(argument: c_dropdownAlgorithms.SelectedItem);
