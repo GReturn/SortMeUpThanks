@@ -39,8 +39,6 @@ public partial class SortMeUpThanksForm : Form
     }
     private void btnStart_Click(object sender, EventArgs e)
     {
-        //if(arr == null) btnReset_Click(null, null);
-
         bgWorker = new BackgroundWorker
         {
             WorkerSupportsCancellation = true
@@ -57,8 +55,6 @@ public partial class SortMeUpThanksForm : Form
         }
         else
         {
-            //if (bgWorker.IsBusy) return;
-
             var numEntries = c_panelSortScreen.Width / BarWidth;
             var maxValue = c_panelSortScreen.Height;
             isPaused = false;

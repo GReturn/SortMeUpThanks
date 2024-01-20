@@ -24,8 +24,6 @@ class BubbleSortEngine(int[] arr, Graphics graphics, int maxValue) : ISortEngine
     {
         (arr[nextIndex], arr[currentIndex]) = (arr[currentIndex], arr[nextIndex]);
 
-        Debug.WriteLine($"CurrentIndex: {currentIndex}, NextIndex: {nextIndex}, X1: {currentIndex * BarWidth}, X2: {nextIndex * BarWidth}");
-
         DrawBar(currentIndex, arr[currentIndex]);
         DrawBar(nextIndex, arr[nextIndex]);
     }
