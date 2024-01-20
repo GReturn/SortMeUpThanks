@@ -2,5 +2,8 @@
 
 interface ISortEngine
 {
-    void Sort(int[] arr, Graphics graphics, int maxValue);
+    void Sort();
+
+    bool IsSorted();
+    void Resume();
 }
