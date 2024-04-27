@@ -15,12 +15,17 @@ public partial class SortMeUpThanksForm : Form
     public SortMeUpThanksForm()
     {
         InitializeComponent();
+        PopulateDropdownAlgorithms();
+        DisableButtonsOnInitialize();
+    }
+
+    private void DisableButtonsOnInitialize()
+    {
         if (arr == null)
         {
             c_btnPause.Enabled = false;
             c_btnStart.Enabled = false; 
         }
-        PopulateDropdownAlgorithms();
     }
 
     private void PopulateDropdownAlgorithms()
@@ -108,6 +113,7 @@ public partial class SortMeUpThanksForm : Form
         }
 
         c_btnStart.Enabled = true;
+        c_btnPause.Enabled = false;
     }
 
     #region Background Worker
