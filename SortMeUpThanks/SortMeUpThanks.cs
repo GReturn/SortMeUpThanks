@@ -7,7 +7,7 @@ namespace SortMeUpThanks;
 public partial class SortMeUpThanksForm : Form
 {
     private readonly int BarWidth = GlobalVariables.BarWidth;
-    private BackgroundWorker bgWorker = null;
+    private BackgroundWorker? bgWorker = null;
     private Graphics graphics;
     private int[] arr;
     private bool isPaused = false;
@@ -15,6 +15,11 @@ public partial class SortMeUpThanksForm : Form
     public SortMeUpThanksForm()
     {
         InitializeComponent();
+        if (arr == null)
+        {
+            c_btnPause.Enabled = false;
+            c_btnStart.Enabled = false; 
+        }
         PopulateDropdownAlgorithms();
     }
 
@@ -39,12 +44,16 @@ public partial class SortMeUpThanksForm : Form
     }
     private void btnStart_Click(object sender, EventArgs e)
     {
+        if(arr == null) btnReset_Click(null, null);
+
         bgWorker = new BackgroundWorker
         {
             WorkerSupportsCancellation = true
         };
         bgWorker.DoWork += new DoWorkEventHandler(BgWorker_DoWork);
         bgWorker.RunWorkerAsync(argument: c_dropdownAlgorithms.SelectedItem);
+
+        c_btnPause.Enabled = true;
     }
     private void c_btnPause_Click(object sender, EventArgs e)
     {
@@ -96,6 +105,8 @@ public partial class SortMeUpThanksForm : Form
             graphics.FillRectangle(new SolidBrush(Color.White),
                 rectX, maxValue - arr[i], BarWidth, maxValue);
         }
+
+        c_btnStart.Enabled = true;
     }
 
     #region Background Worker
