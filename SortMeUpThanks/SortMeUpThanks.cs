@@ -55,6 +55,7 @@ public partial class SortMeUpThanksForm : Form
         }
         else
         {
+            if (bgWorker.IsBusy) return;
             var numEntries = c_panelSortScreen.Width / BarWidth;
             var maxValue = c_panelSortScreen.Height;
             isPaused = false;
