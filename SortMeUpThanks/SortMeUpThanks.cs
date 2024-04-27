@@ -54,6 +54,7 @@ public partial class SortMeUpThanksForm : Form
         bgWorker.RunWorkerAsync(argument: c_dropdownAlgorithms.SelectedItem);
 
         c_btnPause.Enabled = true;
+        c_btnStart.Enabled = false;
     }
     private void c_btnPause_Click(object sender, EventArgs e)
     {
